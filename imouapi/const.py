@@ -148,6 +148,7 @@ IMOU_CAPABILITIES = {
     "AH": "The device supports Anheng encryption",
     "IOTTUNNEL": "Device supports IoT tunnel",
     "AlarmMD": "Support motion detection alarm",
+    "PTZS": "Support PTZ (not documented)",
     "PTZ": "Support PTZ and digital zoom operation",
     "PT": "Support PTZ operation",
     "PT1": "Ranger2 only supports 4-way pan/tilt capability. Does not support zoom in and out Does not support\
@@ -296,6 +297,7 @@ SENSORS = {
     "callbackUrl": "Callback url",
     "status": "Status",
     "battery": "Battery",
+    "ptzPosition": "PTZ position",
 }
 
 # sensors supported by this library
@@ -314,6 +316,7 @@ BUTTONS = {
     "restartDevice": "Restart device",
     "refreshData": "Refresh all data",
     "refreshAlarm": "Refresh alarm",
+    "refreshPTZ": "Refresh PTZ position",
 }
 
 # sirens supported by this library

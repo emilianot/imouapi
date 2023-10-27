@@ -283,6 +283,23 @@ class ImouDevice:
                         "motionAlarm",
                     ),
                 )
+            # add ptz sensor
+            if (
+                "PTZ" in self._capabilities 
+                or "PTZS" in self._capabilities 
+                or "PT" in self._capabilities 
+                or "PT1" in self._capabilities 
+                or "PT2" in self._capabilities
+            ):
+                self._add_sensor_instance(
+                    "sensor",
+                    ImouSensor(
+                        self._api_client,
+                        self._device_id,
+                        self.get_name(),
+                        "ptzPosition",
+                    ),
+                )
             # add nightVisionMode select
             if "NVM" in self._capabilities:
                 self._add_sensor_instance(
@@ -324,6 +341,22 @@ class ImouDevice:
                     "refreshAlarm",
                 ),
             )
+            if (
+                "PTZ" in self._capabilities 
+                or "PTZS" in self._capabilities 
+                or "PT" in self._capabilities 
+                or "PT1" in self._capabilities 
+                or "PT2" in self._capabilities
+            ):
+                self._add_sensor_instance(
+                    "button",
+                    ImouButton(
+                        self._api_client,
+                        self._device_id,
+                        self.get_name(),
+                        "refreshPTZ",
+                    ),
+                )
             # add siren siren
             if "Siren" in self._capabilities:
                 self._add_sensor_instance(

@@ -169,6 +169,23 @@ class ImouSensor(ImouEntity):
             percentage = data["electricitys"][0]["electric"]
             self._state = percentage
 
+        elif self._name == "ptzPosition":
+            data = await self.api_client.async_api_devicePTZInfo(self._device_id)
+            if (
+                "h" not in data 
+                or "v" not in data 
+                or "z" not in data
+            ):
+                raise InvalidResponse(f"ptzPosition not found in {data}")
+            
+            self._state = f"H{data['h']} V{data['v']} Z{data['z']}"            
+            self._attributes = {
+                "horizontal": data["h"],
+                "vertical": data["v"],
+                "zoom": data["z"],
+                "updated": datetime.now().isoformat(),
+            }           
+
         _LOGGER.debug(
             "[%s] updating %s, value is %s %s",
             self._device_name,
